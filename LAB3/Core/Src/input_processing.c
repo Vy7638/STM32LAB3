@@ -8,6 +8,7 @@
 #include "main.h"
 #include "input_reading.h"
 #include "global.h"
+#include "fsm_auto.h"
 
 enum ButtonState{BUTTON_RELEASED, BUTTON_PRESSED, BUTTON_PRESSED_MORE_THAN_1_SECOND};
 enum ButtonState buttonState0 = BUTTON_RELEASED;
@@ -37,6 +38,7 @@ void fsm_for_input_processing(void){
 						if (timerRed != timerAmber + timerGreen){
 							timerAmber = timerRed - timerGreen;
 						}
+						fsm_init_timer();
 						break;
 					case RED_GREEN:
 						status = MANUAL_RED;
